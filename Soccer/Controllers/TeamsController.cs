@@ -10,6 +10,7 @@ namespace Soccer.Controllers
     public class TeamsController : Controller
     {
         public Stream inStream { get; set; }
+        public ITeamRepository teams { get; set; }
 
         // Need to define a parameterless constructor for controller
         public TeamsController() { }
@@ -22,7 +23,7 @@ namespace Soccer.Controllers
         // GET /teams
         public ActionResult Index()
         {
-            IList<Team> teams = null;
+            teams = new TeamRepository();
             if (inStream == null)
             {
                 using (var stream = new FileStream(Server.MapPath("~/App_Data") + @"\football.csv", FileMode.Open))
@@ -37,6 +38,30 @@ namespace Soccer.Controllers
             {
                 System.Console.WriteLine("No records in Team file");
                 return Json(new { Success = true, Teams = teams, Smallest = new Team("Empty")}, JsonRequestBehavior.AllowGet);
+            }
+            var smallest = FantasyFootballCheater.CalcSmallestDiff(teams);
+            return Json(new { Success = true, Teams = teams.GetAll(), Smallest = smallest }, JsonRequestBehavior.AllowGet);
+        }
+
+        // POST /teams
+        public ActionResult AddTeams()
+        {
+            ITeamRepository teams = null;
+            if (inStream == null)
+            {
+                using (var stream = new FileStream(Server.MapPath("~/App_Data") + @"\football.csv", FileMode.Open))
+                {
+                    teams = FantasyFootballCheater.GetTeams(stream);
+                }
+            }
+            else
+            {
+                teams = FantasyFootballCheater.GetTeams(inStream);
+            }
+            if (teams.Count == 0)
+            {
+                System.Console.WriteLine("No records in Team file");
+                return Json(new { Success = true, Teams = teams, Smallest = new Team("Empty") }, JsonRequestBehavior.AllowGet);
             }
             var smallest = FantasyFootballCheater.CalcSmallestDiff(teams);
             return Json(new { Success = true, Teams = teams, Smallest = smallest }, JsonRequestBehavior.AllowGet);

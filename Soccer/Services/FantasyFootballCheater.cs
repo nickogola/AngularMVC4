@@ -7,11 +7,11 @@ namespace Soccer.Services
 {
     public class FantasyFootballCheater
     {
-        public static IList<Team> GetTeams(Stream file)
+        public static ITeamRepository GetTeams(Stream file)
         {
             var fileHandler = new FileHandler(file);
             var content = fileHandler.ParseContent();
-            var teams = new List<Team>();
+            var teams = new TeamRepository();
 
             foreach (var line in content)
             {
@@ -25,10 +25,10 @@ namespace Soccer.Services
             return teams;
         }
 
-        public static IList<Team> CalcSmallestDiff(IList<Team> teams)
+        public static IList<Team> CalcSmallestDiff(ITeamRepository teams)
         {       
             // use LinQ to find the minimum difference
-            var smallest = teams.Min(team => team.Diff);
+            var smallest = teams.GetAll().Min(team => team.Diff);
             // Need to cater for multiple teams having the minimum diff
             var smallestTeams = new List<Team>();
             foreach (var team in teams)

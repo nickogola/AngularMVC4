@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Soccer.Models
 {
@@ -51,7 +48,7 @@ namespace Soccer.Models
 
         public override string ToString()
         {
-            return string.Format("Team: {0}\tFor: {1}\tAgainst: {2}. Diff = {3}", Name, Goals, Against, Diff);
+            return string.Format("Team: {0}\tFor: {1}\tAgainst: {2}. Diff = {3}");
         }
     }
 }
