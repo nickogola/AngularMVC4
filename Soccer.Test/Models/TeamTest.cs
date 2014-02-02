@@ -10,7 +10,7 @@ namespace Soccer.Test
         [TestMethod]
         public void CreateTeam()
         {
-            var team = new Team("Name", 1, 2, 3, 4, 6, 5, 7);
+            var team = new TeamModel("Name", 1, 2, 3, 4, 6, 5, 7);
             Assert.AreEqual("Name", team.Name);
             Assert.AreEqual(1, team.Played);
             Assert.AreEqual(2, team.Won);
@@ -29,7 +29,7 @@ namespace Soccer.Test
         [TestMethod]
         public void CreateTeamFromString()
         {
-            var team = new Team("Name, 1, 2, 3, 4, 5, -, 6, 7");
+            var team = new TeamModel("Name, 1, 2, 3, 4, 5, -, 6, 7");
             Assert.AreEqual("Name", team.Name);
             Assert.AreEqual(1, team.Played);
             Assert.AreEqual(2, team.Won);
@@ -47,13 +47,13 @@ namespace Soccer.Test
         public void CreateTeamFromStringErrors()
         {
             // Not enough fields
-            var team = new Team("Arsenal, 1");
+            var team = new TeamModel("Arsenal, 1");
             Assert.AreEqual(null, team.Name);
 
             // Passing a non-int value
             try
             {
-                new Team("Name, notnumber, 2, 3, 4, 5, -, 6, 7");
+                new TeamModel("Name, notnumber, 2, 3, 4, 5, -, 6, 7");
             } catch( Exception ex)
             {
                 Assert.AreEqual("Input string was not in a correct format.", ex.Message);

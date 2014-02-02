@@ -21,6 +21,7 @@ namespace Soccer.Controllers
         }
 
         // GET /teams
+        [HttpGet]
         public ActionResult Index()
         {
             teams = new TeamRepository();
@@ -37,10 +38,22 @@ namespace Soccer.Controllers
             if (teams.Count == 0)
             {
                 System.Console.WriteLine("No records in Team file");
-                return Json(new { Success = true, Teams = teams, Smallest = new Team("Empty")}, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = true, Teams = teams, Smallest = new TeamModel("Empty")}, JsonRequestBehavior.AllowGet);
             }
             var smallest = FantasyFootballCheater.CalcSmallestDiff(teams);
             return Json(new { Success = true, Teams = teams.GetAll(), Smallest = smallest }, JsonRequestBehavior.AllowGet);
+        }
+
+        // POST /team
+        [HttpPost]
+        public ActionResult AddTeam(TeamModel team)
+        {
+            //var team = new TeamModel(data.Name, 0, 0, 0, 0, data.Goals, data.Against, 0);
+            if (team == null)
+            {
+                return Json(new { Success = false });
+            }
+            return Json(new { Success = true, Team = team }, JsonRequestBehavior.AllowGet);
         }
 
         // POST /teams
@@ -61,7 +74,7 @@ namespace Soccer.Controllers
             if (teams.Count == 0)
             {
                 System.Console.WriteLine("No records in Team file");
-                return Json(new { Success = true, Teams = teams, Smallest = new Team("Empty") }, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = true, Teams = teams, Smallest = new TeamModel("Empty") }, JsonRequestBehavior.AllowGet);
             }
             var smallest = FantasyFootballCheater.CalcSmallestDiff(teams);
             return Json(new { Success = true, Teams = teams, Smallest = smallest }, JsonRequestBehavior.AllowGet);

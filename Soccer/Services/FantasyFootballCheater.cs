@@ -15,7 +15,7 @@ namespace Soccer.Services
 
             foreach (var line in content)
             {
-                var team = new Team(line);
+                var team = new TeamModel(line);
                 // If it is a valid team, add it to the list
                 if (team != null && team.Name != null && team.Name.Length >= 0)
                 {
@@ -25,12 +25,12 @@ namespace Soccer.Services
             return teams;
         }
 
-        public static IList<Team> CalcSmallestDiff(ITeamRepository teams)
+        public static IList<TeamModel> CalcSmallestDiff(ITeamRepository teams)
         {       
             // use LinQ to find the minimum difference
             var smallest = teams.GetAll().Min(team => team.Diff);
             // Need to cater for multiple teams having the minimum diff
-            var smallestTeams = new List<Team>();
+            var smallestTeams = new List<TeamModel>();
             foreach (var team in teams)
             {
                 if (team.Diff == smallest)

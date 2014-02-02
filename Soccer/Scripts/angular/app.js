@@ -1,1 +1,1 @@
-﻿angular.module('Dylan.TAL', []);
+﻿angular.module('Dylan.TAL', [])

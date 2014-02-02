@@ -35,7 +35,7 @@ namespace Soccer.Test
             var stream = CreateStream(content);
             var teams = FantasyFootballCheater.GetTeams(stream);
             Assert.AreEqual(1, teams.Count);
-            var arsenal = (Team)teams[0];
+            var arsenal = (TeamModel)teams[0];
             Assert.AreEqual("Arsenal", arsenal.Name);
             Assert.AreEqual(36, arsenal.Against);
             Assert.AreEqual(43, arsenal.Diff);
@@ -56,9 +56,9 @@ namespace Soccer.Test
             var stream = CreateStream(content);
             var teams = FantasyFootballCheater.GetTeams(stream);
             Assert.AreEqual(2, teams.Count);
-            var arsenal = (Team)teams[0];
+            var arsenal = (TeamModel)teams[0];
             Assert.AreEqual("Arsenal", arsenal.Name.Trim());
-            var liverpool = (Team)teams[1];
+            var liverpool = (TeamModel)teams[1];
             Assert.AreEqual(80, liverpool.Points);
         }
 

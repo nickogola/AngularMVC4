@@ -1,21 +1,24 @@
 ﻿using Soccer.Models;
-using System.Collections.Generic;
 using System.Web.Http;
-using System.Web;
-using System.Web.Mvc;
-using System.Net;
+using System.Net;   
 using System.Net.Http;
 
 namespace Soccer.Controllers
 {
     public class TeamController : ApiController
     {
-        // POST /team/add
-        public HttpResponseMessage AddTeam(Team team)
+        // POST /team
+        [HttpPost]
+        public HttpResponseMessage PostTeam(TeamModel team)
         {
-            System.Console.Write("Hi team", team);
+            //var team = new TeamModel(data.Name, 0, 0, 0, 0, data.Goals, data.Against, 0);
+            if (team == null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NotAcceptable);
+            }
             var response = Request.CreateResponse(HttpStatusCode.Created, team);
+            // TODO! Save the new team to a DB once we have one
             return response;
-        }  
+        }
     }
 }

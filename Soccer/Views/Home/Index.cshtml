@@ -1,24 +1,26 @@
 ﻿<div class="jumbotron">    
-    <h1>Dylan's TAL demo</h1>
+    <h1>Soccer demo</h1>
 </div>
 <div class="row" ng-controller="FootballCtrl">
     <p class="lead">This site loads the results from the English Premier league</p>
     <p class="lead">and calculates the team with smallest difference in <em>for</em> and <em>against</em> goals.</p>
-    <form ng-model="new">
-        <div class="row">
-            <fieldset class="col-md-2">Team Name:</fieldset>
-            <input ng-model="new.teamName" type="text" />
-        </div>
-        <div class="row">
-            <fieldset class="col-md-2">Goals For:</fieldset>
-            <input ng-model="new.goalsFor" type="number" />
-        </div>
-        <div class="row">
-            <fieldset class="col-md-2">Goals Against:</fieldset>
-            <input ng-model="new.goalsAgainst" type="number" />
-        </div>
-        <input type="button" value="Add Team" ng-click="addTeam()"/>
-    </form>
+    <div class="well">
+        <form ng-model="new">
+            <div class="row">
+                <fieldset class="col-md-2">Team Name:</fieldset>
+                <input class="col-md-2" ng-model="new.Name" type="text" />
+            </div>
+            <div class="row">
+                <fieldset class="col-md-2">Goals For:</fieldset>
+                <input class="col-md-2" ng-model="new.For" type="number" />
+            </div>
+            <div class="row">
+                <fieldset class="col-md-2">Goals Against:</fieldset>
+                <input class="col-md-2" ng-model="new.Against" type="number" />
+            </div>
+            <input type="button" value="Add Team" ng-click="addTeam()" />
+        </form>
+    </div>
     <div class="row header">
         <span class="col-md-3 bold">Name</span>
         <span class="col-md-2">Goals For</span>

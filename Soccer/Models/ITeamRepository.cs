@@ -10,9 +10,9 @@ namespace Soccer.Models
     {
         void Add(string name, int played, int won, int lost, int draw, int goals, int against, int points);
         void Add(string row);
-        void Add(Team team);
-        IEnumerable<Team> GetAll();
-        IEnumerator<Team> GetEnumerator();
+        void Add(TeamModel team);
+        IEnumerable<TeamModel> GetAll();
+        IEnumerator<TeamModel> GetEnumerator();
         int Count { get; }
     }
 }

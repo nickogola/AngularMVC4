@@ -2,7 +2,7 @@
 
 namespace Soccer.Models
 {
-    public class Team
+    public class TeamModel
     {
         public string Name { get; set; }
         public int Played { get; set; }
@@ -15,7 +15,7 @@ namespace Soccer.Models
         public int Diff { get { return Math.Abs(Goals - Against); } }
         public bool SmallestDiff { get; set; }
 
-        public Team(string name, int played, int won, int lost, int draw, int goals, int against, int points)
+        public TeamModel(string name, int played, int won, int lost, int draw, int goals, int against, int points)
         {
             Name = name;
             Played = played;
@@ -27,7 +27,7 @@ namespace Soccer.Models
             Points = points;
         }
 
-        public Team(string row)
+        public TeamModel(string row)
         {
             var values = row.Split(',');
             if (values.Length != 9) {
