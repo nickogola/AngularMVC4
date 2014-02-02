@@ -1,0 +1,33 @@
+﻿<div class="jumbotron">    
+    <h1>Dylan's TAL demo</h1>
+</div>
+<div class="row" ng-controller="FootballCtrl">
+    <p class="lead">This site loads the results from the English Premier league</p>
+    <p class="lead">and calculates the team with smallest difference in <em>for</em> and <em>against</em> goals.</p>
+    <div class="row header">
+        <span class="col-md-3 bold">Name</span>
+        <span class="col-md-2">Goals For</span>
+        <span class="col-md-2">Goals Against</span>
+        <span class="col-md-2">Goals Difference</span>
+    </div>
+    <div class="row" ng-repeat="team in teams" ng-class="{smallest: team.SmallestDiff}">
+        <span class="col-md-3">{{team.Name}}</span>
+        <span class="col-md-2">{{team.Goals}}</span>
+        <span class="col-md-2">{{team.Against}}</span>
+        <span class="col-md-2">{{team.Diff}}</span>
+    </div>
+    <div class="well info-box">
+        <div ng-if="smallestDeficit.length == 0">
+            <p>No teams!</p>
+        </div>
+        <div ng-if="smallestDeficit.length == 1">
+            <p>The team with the smallest goal difference is <strong>{{smallestDeficit[0].Name}}</strong> with a goal difference of <strong>{{smallestDeficit[0].Diff}}</strong>.</p>
+        </div>
+        <div ng-if="smallestDeficit.length > 1">
+            <p>The teams with the smallest goal differences are:</p>
+            <ul ng-repeat="team in smallestDeficit">
+                <li>{{team.Name}} - {{team.Diff}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
