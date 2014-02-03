@@ -25,7 +25,7 @@ namespace Soccer
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Scripts/angular/app.js",
-                      "~/Scripts/angular/Controllers/FootballCtrl.js"));
+                      "~/Scripts/angular/Controllers/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

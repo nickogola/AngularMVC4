@@ -168,6 +168,7 @@
     <Content Include="App_Data\football.csv" />
     <Content Include="Scripts\angular\Controllers\FootballCtrl.js" />
     <Content Include="Scripts\angular\app.js" />
+    <Content Include="Scripts\angular\Factories\TeamFactory.coffee" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

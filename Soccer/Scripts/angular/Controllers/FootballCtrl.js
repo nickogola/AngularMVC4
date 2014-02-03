@@ -1,4 +1,4 @@
-﻿function FootballCtrl($scope, $http) {
+﻿app.controller('FootballCtrl', function ($scope, $http) {
     $scope.teams = [];
     $scope.smallestDeficit = [];
 
@@ -17,25 +17,13 @@
     $scope.addTeam = function () {
         team = {
             Name: $scope.new.Name,
-            Played: 0,
-            Won: 0,
-            Lost: 0,
-            Draw: 0,
-            Goals: $scope.new.For,
+            For: $scope.new.For,
             Against: $scope.new.Against,        
-            Points: 0,
-            SmallestDiff: 0
         }
+        //team = { num: 0, name: 'Dylan' };
         console.log("Team =", team);
-        $http({
-            method: 'POST',
-            url: '/api/team',
-            data: JSON.stringify(team),
-            headers: { 'Content-Type': 'application/json' }
-        }).success( function (data) {
-            alert('Success', data)
+        $http.post('/teams/new', team).success(function (data) {
+            console.log('Success', data);
         })
     }
-}
-
-FootballCtrl.$inject = ['$scope', '$http'];
+})

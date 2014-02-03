@@ -44,18 +44,6 @@ namespace Soccer.Controllers
             return Json(new { Success = true, Teams = teams.GetAll(), Smallest = smallest }, JsonRequestBehavior.AllowGet);
         }
 
-        // POST /team
-        [HttpPost]
-        public ActionResult AddTeam(TeamModel team)
-        {
-            //var team = new TeamModel(data.Name, 0, 0, 0, 0, data.Goals, data.Against, 0);
-            if (team == null)
-            {
-                return Json(new { Success = false });
-            }
-            return Json(new { Success = true, Team = team }, JsonRequestBehavior.AllowGet);
-        }
-
         // POST /teams
         public ActionResult AddTeams()
         {
@@ -78,6 +66,26 @@ namespace Soccer.Controllers
             }
             var smallest = FantasyFootballCheater.CalcSmallestDiff(teams);
             return Json(new { Success = true, Teams = teams, Smallest = smallest }, JsonRequestBehavior.AllowGet);
+        }
+
+        public class NewTeamVM
+        {
+            public string Name { get; set; }
+            public int For { get; set; }
+            public int Against { get; set; }
+        }
+
+        // POST /teams
+        [HttpPost]
+        public ActionResult New(NewTeamVM team)
+        {
+            if (team == null)
+            {
+                return Json(new { Success = false });
+            }
+            var newTeam = new TeamModel(team.Name, 0, 0, 0, 0, team.For, team.Against, 0);
+            
+            return Json(new { Success = true, team = team });
         }
     }
 }

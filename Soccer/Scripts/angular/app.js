@@ -1,1 +1,1 @@
-﻿angular.module('Dylan.TAL', [])
+﻿window.app = app = angular.module('SoccerApp', [])
