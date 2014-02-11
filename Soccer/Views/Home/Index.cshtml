@@ -1,7 +1,97 @@
-﻿<div class="jumbotron">    
-    <h1>Dylan's TAL demo</h1>
+﻿<!-- Header -->
+<div id="header" class="skel-panels-fixed">
+
+	<div class="top">
+
+		<!-- Logo -->
+			<div id="logo">
+				<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+				<h1 id="title">EPL Scores</h1>
+				<span class="byline">Premier League</span>
+			</div>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<!--
+							
+					Prologue's nav expects links in one of two formats:
+								
+					1. Hash link (scrolls to a different section within the page)
+								
+						<li><a href="#foobar" id="foobar-link" class="skel-panels-ignoreHref"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
+
+					2. Standard link (sends the user to another page/site)
+
+						<li><a href="http://foobar.tld"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
+							
+				-->
+				<ul>
+					<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-home">EPL Aggregation</span></a></li>
+					<li><a href="#portfolio" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Table Standings</span></a></li>
+					<li><a href="#about" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">About League</span></a></li>
+					<li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-envelope">Contact</span></a></li>
+				</ul>
+			</nav>
+						
+	</div>
+				
+	<div class="bottom">
+
+		<!-- Social Icons -->
+			<ul class="icons">
+				<li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
+				<li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+				<li><a href="#" class="fa fa-github solo"><span>Github</span></a></li>
+				<li><a href="#" class="fa fa-dribbble solo"><span>Dribbble</span></a></li>
+				<li><a href="#" class="fa fa-envelope solo"><span>Email</span></a></li>
+			</ul>
+				
+	</div>
+			
 </div>
-<div class="row" ng-controller="FootballCtrl">
+
+<!-- Main -->
+<div id="main">
+			
+	<!-- Intro -->
+		<section id="top" class="one">
+			<div class="container">
+
+				@*<a href="http://ineedchemicalx.deviantart.com/art/Moonscape-381829905" class="image featured"><img src="images/pic01.jpg" alt="" /></a>*@
+
+            <div id="demoLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+	            <div class='lightbox-content'>
+		            <img src="images/pic01.jpg">
+		            <div class="lightbox-caption"><p>Your caption here</p></div>
+	            </div>
+            </div>
+				<header>
+					<h2 class="alt">This is an <strong>EPL Goal Aggregation</strong></h2>
+				</header>
+							
+				<p>EPL Goal Aggregation is an MVC 4  application that uses angular to load EPL scores from a file and compute the team with the lowest difference between for and against scores.</p>
+
+				@*<footer>
+					<a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+				</footer>*@
+
+			</div>
+		</section>
+					
+	<!-- Portfolio -->
+		<section id="portfolio" class="two">
+			<div class="container">
+					
+				<header>
+					<h2>Barclays Premier League Table Standings</h2>
+				</header>
+							
+			@*	<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+				egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
+				Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis 
+				fusce hendrerit lacus ridiculus.</p>*@
+						
+			<div class="main" ng-controller="FootballCtrl">
     <p class="lead">This site loads the results from the English Premier league</p>
     <p class="lead">and calculates the team with smallest difference in <em>for</em> and <em>against</em> goals.</p>
     <div class="row header">
@@ -31,3 +121,76 @@
         </div>
     </div>
 </div>
+
+
+			</div>
+		</section>
+
+	<!-- About Me -->
+		<section id="about" class="three">
+			<div class="container">
+
+				<header>
+					<h2>About Barclays Premier League</h2>
+				</header>
+
+				<a href="http://ineedchemicalx.deviantart.com/art/Pasadena-357650036" class="image featured"><img src="images/barclayspremierleaguelogo.jpg" alt="" /></a>
+							
+				<p>The Premier League is an English professional league for men's association football clubs. 
+                    At the top of the English football league system, it is the country's primary football competition. 
+                    Contested by 20 clubs, it operates on a system of promotion and relegation with the Football League. Besides English clubs, 
+                    some of the Welsh clubs can also qualify to play, and participation by some Scottish or Irish clubs has also been mooted.</p>
+
+			</div>
+		</section>
+			
+	<!-- Contact -->
+		<section id="contact" class="four">
+			<div class="container">
+
+				<header>
+					<h2>Contact</h2>
+				</header>
+
+				<p>Elementum sem parturient nulla quam placerat viverra 
+				mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia 
+				donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc 
+				orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+							
+				<form method="post" action="#">
+					<div class="row half">
+						<div class="6u"><input type="text" class="text" name="name" placeholder="Name" /></div>
+						<div class="6u"><input type="text" class="text" name="email" placeholder="Email" /></div>
+					</div>
+					<div class="row half">
+						<div class="12u">
+							<textarea name="message" placeholder="Message"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="12u">
+							<a href="#" class="button submit">Send Message</a>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</section>
+
+<!-- Footer -->
+			<div id="footer">
+				
+				<!-- Copyright -->
+					<div class="copyright">
+						<p>&copy; 2014 EPL Aggregation Application. All rights reserved.</p>
+					@*	<ul class="menu">
+							<li>Design: <a href="http://html5up.net">HTML5 UP </a></li>
+							<li>Images: <a href="http://ineedchemicalx.deviantart.com">Felicia Simion</a></li>
+						</ul>*@
+					</div>
+				
+			</div>
+			
+</div>
+
+
